@@ -11,20 +11,16 @@ namespace App.DataUnitTest
         [TestMethod]
         public void SolicitudHWTest()
         {
-            //Assert.IsTrue(false, "Error de conexion db");
-
             SolicitudAcceso obj1 = new SolicitudAcceso(); // Creando instancia
             obj1.NivelAcceso = 2;
-            Assert.IsTrue(obj1.Aprobar(),
-                "El usuario administrador no puede aprobar");
+            Assert.IsTrue(obj1.Aprobar(),"El usuario administrador no puede aprobar");
 
             Solicitud obj2 = new SolicitudAcceso()//;
             {
                 NivelAcceso = 4
             };
             //obj2.NivelAcceso = 2;
-            Assert.IsTrue(obj2.Aprobar(),
-                "El usuario administrador no puede aprobar assert 2");
+            Assert.IsTrue(obj2.Aprobar(),"El usuario administrador no puede aprobar assert 2");
         }
 
         [TestMethod]
@@ -48,6 +44,5 @@ namespace App.DataUnitTest
         {
             return solicitud.Aprobar();
         }
-        
     }
 }
