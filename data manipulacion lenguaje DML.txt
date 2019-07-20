@@ -1,0 +1,9 @@
+INSERT UPDATE DELETE SELECT
+
+ALTER PROCEDURE usp_GetArtist -- usp_GetArtist 'ac%'
+(
+@Nombre nvarchar(100)
+)
+as BEGIN
+SELECT * FROM [dbo].[Artist] WHERE @Nombre = '' OR Name like @Nombre
+END
