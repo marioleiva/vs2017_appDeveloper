@@ -35,7 +35,7 @@ namespace App.Data.DataAcces
                     customer.CustomerID = reader.GetInt32(0);
                     customer.FirstName = reader.GetString(1);
                     customer.LastName = reader.GetString(2);
-                    //customer.Company = reader.GetString(3);
+                    customer.Company = reader.IsDBNull()   //reader.GetString(3);
                     customer.Address = reader.GetString(4);
                     customer.City = reader.GetString(5);
                     //customer.State = reader.GetString(6);
