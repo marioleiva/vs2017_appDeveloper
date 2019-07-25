@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D13CD051-C4E3-4E62-9096-AC2376D931A6}</ProjectGuid>
+    <ProjectGuid>{3A921928-8418-42E8-9836-BA48E15A0F99}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>App.Data.DataAcces</RootNamespace>
-    <AssemblyName>App.Data.DataAcces</AssemblyName>
+    <RootNamespace>App.Data.DataAccess</RootNamespace>
+    <AssemblyName>App.Data.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,16 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdoNetExtensions.cs" />
     <Compile Include="ArtistDA.cs" />
     <Compile Include="BaseDA.cs" />
-    <Compile Include="CustomerDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\App.Entities_Base\App.Entities_Base.csproj">
-      <Project>{c602e2c4-5ecf-4086-b53e-14314a42a2af}</Project>
-      <Name>App.Entities_Base</Name>
+    <ProjectReference Include="..\App.Entities.Base\App.Entities.Base.csproj">
+      <Project>{1a9f2b2f-3735-472c-9c6d-422e62170281}</Project>
+      <Name>App.Entities.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Data.DataAcces
+namespace App.Data.DataAccess
 {
     public class BaseDA
     {
@@ -14,14 +14,14 @@ namespace App.Data.DataAcces
             get
             {
                 var cnxString = "SERVER=S300-ST;DataBase=Chinook; USER ID=sa; PASSWORD=sql";
+
                 return cnxString;
             }
         }
-
         public string GetStringValue(IDataReader reader, string campo)
         {
-            
-            return reader.IsDBNull(reader.GetOrdinal(campo)) 
+
+            return reader.IsDBNull(reader.GetOrdinal(campo))
                 ? null : reader.GetString(reader.GetOrdinal(campo));
         }
     }

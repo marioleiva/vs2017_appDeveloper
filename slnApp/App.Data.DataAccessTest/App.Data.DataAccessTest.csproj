@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D9CA67B3-4B38-42EA-B0BE-A93FA1B13064}</ProjectGuid>
+    <ProjectGuid>{A5C03AF0-FC67-42C3-9F7D-120D390AADCC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>App.Data.DataAccessTest</RootNamespace>
@@ -50,20 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArtistDATest.cs" />
-    <Compile Include="CustomerDATest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\App.Entities_Base\App.Entities_Base.csproj">
-      <Project>{c602e2c4-5ecf-4086-b53e-14314a42a2af}</Project>
-      <Name>App.Entities_Base</Name>
+    <ProjectReference Include="..\App.Data.DataAccess\App.Data.DataAccess.csproj">
+      <Project>{3a921928-8418-42e8-9836-ba48e15a0f99}</Project>
+      <Name>App.Data.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\App.Data.DataAcces\App.Data.DataAcces.csproj">
-      <Project>{d13cd051-c4e3-4e62-9096-ac2376d931a6}</Project>
-      <Name>App.Data.DataAcces</Name>
+    <ProjectReference Include="..\App.Entities.Base\App.Entities.Base.csproj">
+      <Project>{1a9f2b2f-3735-472c-9c6d-422e62170281}</Project>
+      <Name>App.Entities.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -11,39 +11,43 @@ namespace App.Data.DataAcces
 {
     public class CustomerDA : BaseDA
     {
-        public List<Customer> GetCustomer(string filtroPorNombre) // Firma
+        public List<Customer> GetCustomer(string name) // Firma
         {
             var result = new List<Customer>();
 
-            var sql = "usp_GetCustomer";
             using (IDbConnection cnx = new SqlConnection(ConnectionString))
             {
                 cnx.Open();
+
                 var cmd = cnx.CreateCommand();
-                cmd.CommandText = sql;
+                cmd.CommandText = "usp_GetCustomerxName";
                 cmd.CommandType = CommandType.StoredProcedure;
-                // COnfigurar parametros
-                cmd.Parameters.Add(
-                    new SqlParameter("@Nombre", filtroPorNombre)
-                    );
-                //var indice = 0;
+                cmd.Parameters.Add(new SqlParameter("@Name", name));
+
                 var reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
                     var customer = new Customer();
-                    // MAPEO DE DATOS
-                    customer.CustomerID = reader.GetInt32(0);
-                    customer.FirstName = reader.GetString(1);
-                    customer.LastName = reader.GetString(2);
-                    customer.Company = reader.IsDBNull()   //reader.GetString(3);
-                    customer.Address = reader.GetString(4);
-                    customer.City = reader.GetString(5);
-                    //customer.State = reader.GetString(6);
-                    customer.Country = reader.GetString(7);
-                    customer.PostalCode = reader.GetString(8);
-                    customer.Phone = reader.GetString(9);
-                    //customer.Fax = reader.GetString(10);
-                    customer.Email = reader.GetString(11);
+                    customer.CustomerID = reader.GetInt32(reader.GetOrdinal("CustomerId"));
+                    customer.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+
+                    customer.LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                    customer.Company = GetStringValue(reader, "Company");
+                    // reader.IsDBNull(reader.GetOrdinal("Company")) ? null : reader.GetString(reader.GetOrdinal("Company"));
+
+                    customer.Company = reader.GetString(reader.GetOrdinal("Company"));
+                    customer.Address = reader.GetString(reader.GetOrdinal("Address"));
+                    customer.City = reader.GetString(reader.GetOrdinal("City"));
+                    customer.State = reader.GetString(reader.GetOrdinal("State"));
+                    customer.Country = reader.GetString(reader.GetOrdinal("Country"));
+                    customer.PostalCode = reader.GetString(reader.GetOrdinal("PostalCode"));
+                    customer.Phone = reader.GetString(reader.GetOrdinal("Phone"));
+                    customer.Fax = reader.GetStringValue("Fax");
+                    //customer.Fax = reader.GetString(reader.GetOrdinal("Fax"));
+                    customer.Email = reader.GetString(reader.GetOrdinal("Email"));
+                    customer.SupportRepId = reader.GetInt32(reader.GetOrdinal("SupportRepId"));
+
                     result.Add(customer);
                 }
             }

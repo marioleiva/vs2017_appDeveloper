@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Entities_Base
+namespace App.Entities.Base
 {
     public class Customer
     {
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Company { get; set; }
@@ -20,7 +20,6 @@ namespace App.Entities_Base
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
-        public int? SupportRepId { get; set; }
-
+        public int SupportRepId { get; set; }
     }
 }
