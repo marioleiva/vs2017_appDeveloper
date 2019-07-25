@@ -165,52 +165,52 @@ namespace App.Data.DataAcces
             return result;
         }
 
-        public bool DeleteArtist(int id)
-        {
-            var result = false;
+        //public bool DeleteArtist(int id)
+        //{
+        //    var result = false;
 
-            using (IDbConnection cnx = new SqlConnection(ConnectionString))
-            {
-                cnx.Open();
-                var cmd = cnx.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "usp_DeleteArtist";
-                cmd.Parameters.Add(
-                    new SqlParameter("@ID", id));
-                result = cmd.ExecuteNonQuery() > 0;
-            }
-            return result;
-        }
+        //    using (IDbConnection cnx = new SqlConnection(ConnectionString))
+        //    {
+        //        cnx.Open();
+        //        var cmd = cnx.CreateCommand();
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = "usp_DeleteArtist";
+        //        cmd.Parameters.Add(
+        //            new SqlParameter("@ID", id));
+        //        result = cmd.ExecuteNonQuery() > 0;
+        //    }
+        //    return result;
+        //}
 
-        public Artist GetArtistById(int id)
-        {
-            var result = new Artist();  // 
-            var sql = "usp_GetArtistId";
-            using (IDbConnection cnx = new SqlConnection(ConnectionString))
-            {
-                cnx.Open();
+        //public Artist GetArtistById(int id)
+        //{
+        //    var result = new Artist();  // 
+        //    var sql = "usp_GetArtistId";
+        //    using (IDbConnection cnx = new SqlConnection(ConnectionString))
+        //    {
+        //        cnx.Open();
 
-                var cmd = cnx.CreateCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = sql;
-                cmd.Parameters.Add(
-                    new SqlParameter("@ID", id)
-                    );
+        //        var cmd = cnx.CreateCommand();
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = sql;
+        //        cmd.Parameters.Add(
+        //            new SqlParameter("@ID", id)
+        //            );
 
-                var indice = 0;
-                var reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    var artist = new Artist();
-                    indice = reader.GetOrdinal("ArtistId");
-                    artist.ArtistId = reader.GetInt32(indice);
+        //        var indice = 0;
+        //        var reader = cmd.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            var artist = new Artist();
+        //            indice = reader.GetOrdinal("ArtistId");
+        //            artist.ArtistId = reader.GetInt32(indice);
 
-                    indice = reader.GetOrdinal("Name");
-                    artist.Name = reader.GetString(indice);
-                }
-            }
-            return result;
-        }
+        //            indice = reader.GetOrdinal("Name");
+        //            artist.Name = reader.GetString(indice);
+        //        }
+        //    }
+        //    return result;
+        //}
 
         
 

@@ -22,31 +22,35 @@ namespace App.Data.DataAcces
                 var cmd = cnx.CreateCommand();
                 cmd.CommandText = "usp_GetCustomerxName";
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@Name", name));
+                cmd.Parameters.Add(new SqlParameter("@FullName", name));
 
                 var reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
                     var customer = new Customer();
-                    customer.CustomerID = reader.GetInt32(reader.GetOrdinal("CustomerId"));
+                    customer.CustomerID = reader.GetInt32Value("CustomerId");
                     customer.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
 
                     customer.LastName = reader.GetString(reader.GetOrdinal("LastName"));
                     customer.Company = GetStringValue(reader, "Company");
                     // reader.IsDBNull(reader.GetOrdinal("Company")) ? null : reader.GetString(reader.GetOrdinal("Company"));
 
-                    customer.Company = reader.GetString(reader.GetOrdinal("Company"));
+                    //customer.Company = reader.GetString(reader.GetOrdinal("Company"));
                     customer.Address = reader.GetString(reader.GetOrdinal("Address"));
                     customer.City = reader.GetString(reader.GetOrdinal("City"));
-                    customer.State = reader.GetString(reader.GetOrdinal("State"));
+                    customer.Company = GetStringValue(reader, "State");
+                    //customer.State = reader.GetString(reader.GetOrdinal("State"));
                     customer.Country = reader.GetString(reader.GetOrdinal("Country"));
                     customer.PostalCode = reader.GetString(reader.GetOrdinal("PostalCode"));
                     customer.Phone = reader.GetString(reader.GetOrdinal("Phone"));
+
                     customer.Fax = reader.GetStringValue("Fax");
+
                     //customer.Fax = reader.GetString(reader.GetOrdinal("Fax"));
                     customer.Email = reader.GetString(reader.GetOrdinal("Email"));
-                    customer.SupportRepId = reader.GetInt32(reader.GetOrdinal("SupportRepId"));
+                    customer.SupportRepId = reader.GetInt32Null("SupportRepId");
+                    //customer.SupportRepId = reader.GetInt32(reader.GetOrdinal("SupportRepId"));
 
                     result.Add(customer);
                 }
@@ -89,7 +93,7 @@ namespace App.Data.DataAcces
                 cmd.Parameters.Add(
                     new SqlParameter("@Email", entity.Email));
                 cmd.Parameters.Add(
-                    new SqlParameter("@SupportRepId", 3));
+                    new SqlParameter("@SupportRepId", entity.SupportRepId));
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
             }

@@ -14,5 +14,16 @@ namespace App.Data.DataAcces
             return reader.IsDBNull(reader.GetOrdinal(campo))
                 ? null : reader.GetString(reader.GetOrdinal(campo));
         }
+
+        public static Int32? GetInt32Null(this IDataReader reader, string campo)
+        {
+            return reader.IsDBNull(reader.GetOrdinal(campo))
+                ? new Nullable<Int32>() : reader.GetInt32(reader.GetOrdinal(campo));
+        }
+
+        public static int GetInt32Value(this IDataReader reader, string campo)
+        {
+            return reader.GetInt32(reader.GetOrdinal(campo));
+        }
     }
 }

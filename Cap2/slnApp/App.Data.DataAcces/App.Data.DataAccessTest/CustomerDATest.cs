@@ -13,13 +13,13 @@ namespace App.Data.DataAccessTest
     [TestClass]
     public class CustomerDATest
     {
-        //[TestMethod]
-        //public void GetCustomerWithSP()
-        //{
-        //    var da = new CustomerDA();
-        //    var listado = da.GetCustomer("Leo%");
-        //    Assert.IsTrue(listado.Count > 0);
-        //}
+        [TestMethod]
+        public void GetCustomerWithSP()
+        {
+            var da = new CustomerDA();
+            var listado = da.GetCustomer("Leo%");
+            Assert.IsTrue(listado.Count > 0);
+        }
 
         //[TestMethod]
         //public void InsertCustomerWithSP()
@@ -36,13 +36,14 @@ namespace App.Data.DataAccessTest
         //    customer.Phone = "Artista prueba";
         //    customer.Fax = "Artista prueba";
         //    customer.Email = "Artista prueba";
+        //    customer.CustomerID = 1;
         //    //artist.Name = "Artista prueba";
 
         //    var da = new CustomerDA();
         //    var codigoGenerado = da.InsertCustomer(customer);
         //    Assert.IsTrue(codigoGenerado > 0);
         //}
-        
+
 
         //[TestMethod]
         //public void UpdateCustomer()
@@ -66,7 +67,7 @@ namespace App.Data.DataAccessTest
         //[TestMethod]
         //public void DeleteArtist()
         //{
-        //    var id = 77;
+        //    var id = 2;
         //    var da = new CustomerDA();
         //    var codigoGenerado = da.DeleteCustomer(id);
         //    Assert.IsTrue(codigoGenerado);
