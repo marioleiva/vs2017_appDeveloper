@@ -1,0 +1,64 @@
+CREATE PROC [dbo].[usp_GetCustomerxName]
+@FullName nVarchar(40)
+As
+Begin
+	SELECT 
+		[CustomerId], [FirstName], [LastName], 
+		[Company], [Address], [City], 
+		[State], [Country], [PostalCode], 
+		[Phone], [Fax], [Email], [SupportRepId]	
+	 FROM Customer 
+	 WHERE @FullName = '' 	
+		OR (FirstName + ' ' + LastName Like @FullName)
+End
+
+
+CREATE PROCEDURE usp_InsertInvoice(
+@CustomerId int, 
+@InvoiceDate datetime, 
+@BillingAddress nvarchar(70), 
+@BillingCity nvarchar(40), 
+@BillingState nvarchar(40), 
+@BillingCountry nvarchar(40), 
+@BillingPostalCode nvarchar(10), 
+@Total numeric(10,2)
+)
+as
+begin
+INSERT INTO [dbo].[Invoice]
+           ([CustomerId]
+           ,[InvoiceDate]
+           ,[BillingAddress]
+           ,[BillingCity]
+           ,[BillingState]
+           ,[BillingCountry]
+           ,[BillingPostalCode]
+           ,[Total])
+     VALUES
+           (
+		   @CustomerId
+           ,@InvoiceDate
+           ,@BillingAddress
+           ,@BillingCity
+           ,@BillingState
+           ,@BillingCountry
+           ,@BillingPostalCode
+           ,@Total
+		   )
+		   select SCOPE_IDENTITY()
+end
+
+go
+
+CREATE PROCEDURE usp_InsertInvoiceLine(
+@InvoiceId int, @TrackId int, @UnitPrice numeric(10,2), @Quantity int
+)
+as
+begin
+INSERT INTO [dbo].[InvoiceLine]
+           (InvoiceId, TrackId , UnitPrice , Quantity )
+     VALUES
+           (
+		   @InvoiceId , @TrackId , @UnitPrice , @Quantity 
+		   )
+end
