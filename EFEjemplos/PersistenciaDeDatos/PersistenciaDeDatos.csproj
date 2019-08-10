@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B395B16E-92E4-4EF7-9923-AFDB82A26ADB}</ProjectGuid>
+    <ProjectGuid>{7444F61F-97A4-48B2-9435-20862525A740}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PersistenciaDeDatos</RootNamespace>
@@ -44,16 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Compartidos\FabricaDeConexiones.cs" />
+    <Compile Include="Compartido\FabricaDeConexiones.cs" />
     <Compile Include="Gestores\GestorDeCustomers.cs" />
     <Compile Include="Gestores\GestorDePlayList.cs" />
     <Compile Include="Modelos\Customer.cs" />
-    <Compile Include="Modelos\PlayList.cs" />
+    <Compile Include="Modelos\Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
