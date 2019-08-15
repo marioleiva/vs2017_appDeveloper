@@ -14,16 +14,24 @@ namespace Shop.Test.Console
         {
             using (var db = new ShopDb())
             {
-                db.Products.Add(new Product()
+                //db.Products.Add(new Product()
+                //{
+                //    Descripcion = "Mi primer producto registrado",
+                //    Name = "Chocolate",
+                //    Category = new Category()
+                //    {
+                //        Name = "Golosina",
+                //        Description = "Productos azucarados para niños"
+                //    }
+                //});
+
+                var product = new Product()
                 {
-                    Descripcion = "Mi primer producto registrado",
-                    Name = "Chocolate",
-                    Category = new Category()
-                    {
-                        Name = "Golosina",
-                        Description = "Productos azucarados para niños"
-                    }
-                });
+                    Descripcion = "Es una fruta",
+                    Name = "Sandia",
+                    CategoryId = 1
+                };
+                db.Entry(product).State = System.Data.Entity.EntityState.Added; 
                 db.SaveChanges();
             }
         }
