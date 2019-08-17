@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="Index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        </head>
+
+<body class="container">
+    <h1> Registro de personas <span class="badge badge-secondary"> Fake api</span></h1>
+    <br>
+<div class="row">
+
+    <div class="col-4">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Fecha nacimiento</label>
+            <input  class="form-control" type="date">
+            <br>
+            <button  class="btn btn-primary ">Guardar</button>
+        </div>
+    
+    </div>
+    <div class="col-8">
+            <table id="tablaDePersonas" class="table table-dark table-hover letrachica" id="titulo" >
+                    <thead>
+                        <tr><th>ID</th><th>Nombre</th><th>Fecha nacimiento</th><th>acciones</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+    </div>
+</div>
+<script>
+    var contador= 1;
+
+function sacarDatos(){
+var persona = {
+    id: contador++,
+    nombre: $('#nombre').val(),
+    fecha: $('#fechaNacimiento').val()
+}
+$('#nombre').val('');
+$('#fechaNacimiento').val('');
+return persona;
+}
+function agregarPersonaTabla(persona){
+$('#tablaDePersonas').append
+(
+    `<tr>
+        <td>  ${persona.id} </td>
+        <td>   ${persona.nombre} </td>
+        <td>  ${persona.fecha}  </td>
+        <td><button  class="btn btn-primary ">borrar</button></td>
+     </tr>
+
+     <button  class="btn btn-primary ">borrar</button>
+    `
+); 
+}
+
+$('#botonDeGuardado').click(function(){
+var persona = sacarDatos();
+agregarPersonaTabla(persona);
+});
+
+function traerDelServidor(){
+    $.get('http://jsonplaceholder.typicode.com/post')
+    .then(listadePost=>{
+        listadePost
+        .map(post => {
+            return{
+                id: post.id,
+                nombre: post.title,
+                fecha:post.title.length
+            }
+        })
+        .foreach(persona=>{
+        agregarPersonaTabla(persona)
+        });
+    });
+}
+
+</script>
+</body>
+
+</html>

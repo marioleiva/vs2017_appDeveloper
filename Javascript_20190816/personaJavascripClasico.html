@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="Index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        </head>
+
+<body class="container">
+    <h1> Registro de personas <span class="badge badge-secondary"> Fake api</span></h1>
+    <br>
+<div class="row">
+
+    <div class="col-4">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input id="nombre" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label>Fecha nacimiento</label>
+            <input id="fechaNacimiento" class="form-control" type="date">
+            <br>
+            <button id="botonDeGuardado" class="btn btn-primary ">Guardar</button>
+        </div>
+    
+    </div>
+    <div class="col-8">
+            <table id="tablaDePersonas" class="table table-dark table-hover letrachica" id="titulo" >
+                    <thead>
+                        <tr><th>ID</th><th>Nombre</th><th>Fecha nacimiento</th></tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+    </div>
+</div>
+<script>
+    var contador= 1;
+    var inputNombre = document.getElementById('nombre');
+    var inputEdad = document.getElementById('fechaNacimiento');
+function sacarDatos(){
+var persona = {
+    id: contador++,
+    nombre:inputNombre.value,
+    fecha: inputEdad.value
+}
+inputNombre.value = '';
+inputEdad.value = '';
+return persona;
+}
+function agregarPersonaTabla(persona){
+var tabla = document.getElementById('tablaDePersonas');
+var nuevaFIla = tabla.insertRow(1);
+var id= nuevaFIla.insertCell(0);
+var nombre = nuevaFIla.insertCell(1);
+var fecha = nuevaFIla.insertCell(2);
+id.innerText = persona.id;
+nombre.innerText = persona.nombre;
+fecha.innerText = persona.fecha;
+}
+
+var botonGuardar = document.getElementById('botonDeGuardado');
+botonGuardar.onclick = function(){
+    var persona = sacarDatos();
+    agregarPersonaTabla(persona);
+}
+</script>
+</body>
+
+</html>
