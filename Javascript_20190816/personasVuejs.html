@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body class="container">
+        <h1><span class="badge badge-secondary">Registro de personas</span></h1>
+        <div class="row" id="app">
+            <div class="col-4">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input v-model="nombre" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label>Fecha De nacimiento</label>
+                    <input v-model="fechaDeNacimiento" class="form-control" type="date">
+                </div>
+                <button v-on:click="guardarPersona" class="btn btn-primary">Guardar</button>
+            </div>
+            <div class="col-8">
+                <table class="table table-sm table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Fecha De Nacimiento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="p in personas" v-on:click="borrarPersona(p)">
+                            <td>{{p.Id}}</td>
+                            <td>{{p.Nombre}}</td>
+                            <td>{{p.Fecha}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        <script>
+            var cantidadDeObjetos = 0;
+
+            var app = new Vue({
+                        el: '#app',
+                        data: {
+                            fechaDeNacimiento: '',
+                            nombre: '',
+                            contador: 1,
+                            personas: []
+                        },
+                        methods:{
+                            guardarPersona:function(){
+                                let persona = {
+                                    Id: this.contador++,
+                                    Nombre: this.nombre,
+                                    Fecha: this.fechaDeNacimiento
+                                }
+                                this.fechaDeNacimiento = '';
+                                this.nombre = '';
+                                this.personas.push(persona);
+                            },
+                            cargarDatosDelServidor:function(){
+                                $.get('http://jsonplaceholder.typicode.com/posts')
+                                 .then(listaDePost=>{
+                                     let personasDelServidor = listaDePost.map(post=>{
+                                         return {
+                                             Id: post.id,
+                                             Nombre: post.title,
+                                             Fecha: post.title.length,
+                                         }
+                                     })           
+                                     this.personas.push(...personasDelServidor);
+                                 });
+                            },
+                            borrarPersona: function(persona){
+                                var id = persona.Id;
+                                var nuevasPersonas = this.personas.filter(x=>x.Id != id);
+                                this.personas = nuevasPersonas;
+                            }
+                        }
+                      })
+                      app.cargarDatosDelServidor();
+        </script>
+    </body>
+</hmtl>
