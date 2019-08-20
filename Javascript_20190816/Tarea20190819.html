@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body class="container">
+        <h1><span class="badge badge-secondary">Recuperar información de WS</span></h1>
+        
+        
+        
+        <div class="row col-12" id="app">
+            <div v-for="p in album" class="card col-3" style="width: 18rem;">
+                <img v-bind:src=" p.thumbnailUrl+ '.jpg'" class="card-img-top" alt="" /> 
+                <div class="card-body">
+                  <h5 class="card-title">{{p.id}} </h5>
+                  <p class="card-text">{{p.title}}</p>
+                  <button  class="btn btn-primary" v-on:click="borrarAlbum(p.id)">Borrar albúm</button>
+         
+                  <a v-bind:href="p.url" class="btn btn-info">Ir </a>
+                </div>
+            </div>        
+        </div>
+
+
+
+        <script>
+            var cantidadDeObjetos = 0;
+            var app = new Vue({
+                        el: '#app',
+                        data: {
+                            album: {
+                                thumbnailUrl: 'image.jpg'
+                            },
+                            album: []
+                        },
+                        methods:{
+                            guardarPersona:function(){
+                                let album = {
+                                    id: this.id,
+                                    albumId: this.albumId,
+                                    title: this.title,
+                                    url: this.url,
+                                    thumbnailUrl: this.thumbnailUrl
+
+                                }
+                                this.album.push(album);
+                            },
+                            cargarDatosDelServidor:function(){
+                                $.get('http://jsonplaceholder.typicode.com/photos')
+                                 .then(listaDePost=>{
+                                     let albumDelServidor = listaDePost.map(photos=>{
+                                         return {
+                                             id: photos.id,
+                                             albumId: photos.albumId,
+                                             title: photos.title,
+                                             url: photos.url,
+                                             thumbnailUrl: photos.thumbnailUrl,
+                                         }
+                                     })           
+                                     this.album.push(...albumDelServidor);
+                                 });
+                            },
+                            borrarAlbum: function(id){
+                                //var id = persona.Id;
+                                var nuevoalbum = this.album.filter(x=>x.id != id);
+                                this.album = nuevoalbum;
+                            }
+                        }
+                      })
+                      app.cargarDatosDelServidor();
+        </script>
+    </body>
+</hmtl>

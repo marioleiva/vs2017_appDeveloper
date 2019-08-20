@@ -1,0 +1,12 @@
+Programacion Orientada a Objetos
+	https://www.youtube.com/watch?v=xz7gn9UXdrA
+HTML Y CSS BASICO
+	https://www.youtube.com/watch?v=rbuYtrNUxg4
+DEBUGING CON CHROME
+	https://www.youtube.com/watch?v=I388w3wDkjc
+JAVASCRIPT
+	https://www.youtube.com/watch?v=xnWtGNiG2lg&list=PLhSj3UTs2_yVC0iaCGf16glrrfXuiSd0G
+VUE.JS
+	https://es-vuejs.github.io/vuejs.org/v2/guide/
+MVC 5 + EF
+	https://www.youtube.com/watch?v=YzC-FYg66xA&list=PL0kIvpOlieSNWR3YPSjh9P2p43SFnNBlB
