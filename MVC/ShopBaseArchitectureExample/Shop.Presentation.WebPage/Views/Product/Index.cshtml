@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="col-12" id="app">
+    <div class="col-4">
+        <div class="form-group">
+            <label>Categoria</label>
+            <select v-model="CatID" class="form-control">
+                <option v-for="category in categories" v-bind:value="category.Id">
+                    {{ category.Name }}
+                </option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            categories: [],
+            CatID = null
+        },
+        methods: {
+            GetCategoriesFromServer: function () {
+                $.get('/api/productmanagement/GetAllCategories')
+                    .then(categoryArray => {
+                        this.categories.push(...categoryArray);
+                    });
+
+            }
+        }
+    })
+    app.GetCategoriesFromServer();
+
+
+</script>
+
