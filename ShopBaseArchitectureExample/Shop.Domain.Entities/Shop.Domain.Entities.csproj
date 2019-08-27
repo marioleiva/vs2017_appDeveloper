@@ -48,6 +48,7 @@
     <Compile Include="SalesTurn.cs" />
     <Compile Include="Shared\Enums\Sex.cs" />
     <Compile Include="Shared\TBaseEntity.cs" />
+    <Compile Include="SheduleTask.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
