@@ -1,0 +1,59 @@
+﻿<div class="col-12 row" id="app">
+    <div class="col-4">
+        <div class="form-group">
+            <label>Categoria</label>
+            <select v-model="categoryId" class="form-control">
+                <option v-for="category in categories" v-bind:value="category.Id">
+                    {{ category.Name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nombre Del Producto</label>
+            <input v-model="nombre" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Descripcion Del Producto</label>
+            <input v-model="descripcion" class="form-control" />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" v-on:click="RegistrarProductoEnElServidor">Registrar nuevo Producto</button>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="form-group">
+            <label>Filtro De Categoria</label>
+            <select v-model="categoryIdFilter" class="form-control" v-on:change="cambioElFiltro">
+                <option value="0">Todos</option>
+                <option v-for="category in categories" v-bind:value="category.Id">
+                    {{ category.Name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nombre Del Producto</label>
+            <input v-model="nombreFiltro" class="form-control" v-on:keyup="ActivarFiltro" />
+        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="producto in listaDeProductos">
+                    <td>{{producto.Id}}</td>
+                    <td>{{producto.Name}}</td>
+                    <td>{{producto.Description}}</td>
+                    <td>{{producto.CategoryName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/Utilitarios/ExtensionesDeJquery.js"></script>
+<script src="~/Scripts/LogicaDeNegocios/MantenimientoDeProductos.js"></script>
+

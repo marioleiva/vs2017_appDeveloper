@@ -13,5 +13,6 @@ namespace Shop.Services.Interfaces.Handlers
         IEnumerable<RegisteredProduct> GetProductByCategoryId(int categoryId);
         IEnumerable<RegisteredCategory> GetAllCategories();
         RegisteredProduct RegisterProduct(CreateProducto newProducto);
+        IEnumerable<RegisteredProduct> GetAllProducts();
     }
 }
