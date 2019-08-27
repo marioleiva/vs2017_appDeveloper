@@ -1,0 +1,31 @@
+﻿<div class="col-12 row" id="app">
+    <div class="col-6">
+       
+    </div>
+    <div class="col-6">
+        
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Plan</th>
+                    <th>HD</th>
+                    <th>SD</th>
+                    <th>Total</th>
+                    <th>Canales de audio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="can in listaCanales">
+                    <td>{{can.Plan}}</td>
+                    <td>{{can.HD}}</td>
+                    <td>{{can.SD}}</td>
+   
+                    <td>{{can.Audio}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="~/Scripts/Utilitarios/ExtensionesDeJquery.js"></script>
+<script src="~/Scripts/LogicaDeNegocios/MantenimientoDeProductos.js"></script>
+

@@ -1,0 +1,32 @@
+﻿@{ 
+    Layout = null;
+}
+
+@model Shop.Presentation.WebPage.Models.Boleta
+
+<h1>@Model.Serie</h1>
+<h2>@Model.FechaDeVenta</h2>
+<h3>@Model.NombreCliente</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Descripcion</th>
+            <th>Monto</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detalle in Model.Detalles)
+        {
+            <tr>
+                <th>@detalle.Descripcion</th>
+                <th>@detalle.SubTotal</th>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<img src="@Model.QREnBase64" />
+
+
+<p> Total : @Model.Monto</p>
