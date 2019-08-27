@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B43C4280-4B41-4FB3-8A7C-8F94B5D52ADA}</ProjectGuid>
+    <ProjectGuid>{EE10BCFE-F042-4052-94D0-41F5BB4C7A9A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shop.Infrastructure.EFDataContext</RootNamespace>
-    <AssemblyName>Shop.Infrastructure.EFDataContext</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>App.Postpago.EFDataContext</RootNamespace>
+    <AssemblyName>App.Postpago.EFDataContext</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -48,19 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShopDb.cs" />
+    <Compile Include="AppDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shop.Domain.Entities\Shop.Domain.Entities.csproj">
-      <Project>{052f3268-3d17-40fc-86fc-44f2519fff6c}</Project>
-      <Name>Shop.Domain.Entities</Name>
+    <ProjectReference Include="..\App.Postpago.Entity\App.Postpago.Entity.csproj">
+      <Project>{5aab1de9-4c71-4f34-8d7a-14dffcef64e9}</Project>
+      <Name>App.Postpago.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

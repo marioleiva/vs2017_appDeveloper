@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "ListaCanales";
+}
+
+<div class="col-12 row" id="app">
+    <div class="col-6">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="producto in listaDeProductos">
+                    
+                    <td>{{producto.Plan}}</td>
+  
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-6">
+
+    </div>
+</div>
+<script src="~/Scripts/Utilitarios/ExtensionesDeJquery.js"></script>
+<script src="~/Scripts/LogicaDeNegocios/MantenimientoDeProductos.js"></script>
+
