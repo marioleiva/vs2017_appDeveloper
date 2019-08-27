@@ -26,23 +26,6 @@ namespace Shop.Services.implementation
             }
         }
 
-        public IEnumerable<RegisteredProduct> GetAllProducts()
-        {
-            using (var db = new ShopDb())
-            {
-                return db.Products
-                         .Include("Category")
-                         .ToList()
-                         .Select(x => new RegisteredProduct
-                         {
-                             Id = x.Id,
-                             Description = x.Descripcion,
-                             Name = x.Name,
-                             CategoryName = x.Category.Name
-                         });
-            }
-        }
-
         public IEnumerable<RegisteredProduct> GetProductByCategoryId(int categoryId)
         {
             using (var db = new ShopDb())

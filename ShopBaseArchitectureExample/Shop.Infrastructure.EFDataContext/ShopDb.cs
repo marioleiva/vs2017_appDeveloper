@@ -14,8 +14,6 @@ namespace Shop.Infrastructure.EFDataContext
         public DbSet<Category> Categories { get; set; }
         public DbSet<SalesTurn> SalesTurns { get; set; }
         public DbSet<Employe> Employees { get; set; }
-        public DbSet<SheduleTask> SheduleTasks { get; set; }
-
 
         public ShopDb() : base("ShopDb")
         {

@@ -1,9 +1,7 @@
 ﻿using Shop.Domain.Entities;
-using Shop.Domain.Entities.Shared.Enums;
 using Shop.Infrastructure.EFDataContext;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,23 +14,24 @@ namespace Shop.Test.Console
         {
             using (var db = new ShopDb())
             {
-                SalesTurn turn = new SalesTurn()
+                //db.Products.Add(new Product()
+                //{
+                //    Descripcion = "Mi primer producto registrado",
+                //    Name = "Chocolate",
+                //    Category = new Category()
+                //    {
+                //        Name = "Golosina",
+                //        Description = "Productos azucarados para niños"
+                //    }
+                //});
+
+                var product = new Product()
                 {
-                    Active = true,
-                    Start = DateTime.Now,
-                    End = DateTime.Now,
-                    Employees = new HashSet<Employe>()
-                    {
-                        new Employe()
-                        {
-                            Address = "Av La Marina 766",
-                            Birthday = DateTime.Now.ToString(),
-                            Nombre = "Daniel Carbajal",
-                            Sex = Sex.Male,                    
-                        }
-                    }
+                    Descripcion = "Es una fruta",
+                    Name = "Sandia",
+                    CategoryId = 1
                 };
-                db.SalesTurns.Add(turn);
+                db.Entry(product).State = System.Data.Entity.EntityState.Added; 
                 db.SaveChanges();
             }
         }
