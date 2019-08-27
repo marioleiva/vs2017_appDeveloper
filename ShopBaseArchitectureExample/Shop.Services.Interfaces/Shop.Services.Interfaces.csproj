@@ -42,10 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Handlers\IProductHandler.cs" />
+    <Compile Include="Handlers\ISheduleTaskHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requests\CreateProducto.cs" />
+    <Compile Include="Requests\CreateShedulerTask.cs" />
     <Compile Include="Responses\RegisteredCategory.cs" />
     <Compile Include="Responses\RegisteredProduct.cs" />
+    <Compile Include="Responses\RegisteredShedulerTask.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
