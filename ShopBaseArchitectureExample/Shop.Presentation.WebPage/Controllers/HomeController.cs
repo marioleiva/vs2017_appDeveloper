@@ -50,6 +50,7 @@ namespace Shop.Presentation.WebPage.Controllers
             PdfDocument doc = converter.ConvertUrl(@"http://localhost:62712");
             doc.Save(file);
             doc.Close();
+            Session["Daniel"] = 10;
             return File(file.ToArray(),"boleta.pdf");
 
         }

@@ -157,8 +157,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductManagementController.cs" />
-    <Compile Include="Controllers\SchedulerController.cs" />
-    <Compile Include="Controllers\ShedulerTaskController.cs" />
     <Compile Include="Filtros\FiltroDeExcepciones.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -192,7 +190,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\LogicaDeNegocios\MantenimientoDeProductos.js" />
-    <Content Include="Scripts\LogicaDeNegocios\MantenimientoDeSheduler.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Utilitarios\ExtensionesDeJquery.js" />
     <Content Include="Scripts\vue.js" />
@@ -211,7 +208,6 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Scheduler\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,7 +23,7 @@
             this.categoryId = null;
         },
         RegistrarProductoEnElServidor: function () {
-            post('/api/productmanagement/RegisterProduct', {
+                post('/api/productmanagement/RegisterProduct', {
                     Name: this.nombre,
                     Descripcion: this.descripcion,
                     CategoryId: this.categoryId
