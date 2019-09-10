@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "/api/Values",
+                headers: {
+                    'Authorization': 'Bearer F6xMrE-s3ENTgfgJ287ipOhS6Rdoe9V-exvQ3ZVF9ebT5XIITsFC85g6RmWGfcN4-PYhAgKiwZw7vBjbX3lR056Vbne_aLKHfcCBdy0VKb9iFSeyhsxXNY_CZFUCDTl498wqrcCcVSoDou2DodxUktD_REdXMtE8kpqmVtPNfJJVsJ9vDj3t_0nLx8qm3Z9BRZF22N8N4VDNIUXOMqH9YKhXg3ysQpZUOEI0smxywTQjfmdLfcNNRf9Rlo4Pl7HeMuv55sqW5ZXA2haplgmPDCKsfQpDS6XCP50cMvOPJ4FTvFdCcyFt6sE8objmhlGQYb9e9XAYdKtHA-fjEy78e6qYNzjhqiLoC_4zX-RvbIrTTT8IRfT4LsFkl9U1UcVrzB7PL-PcoKjtpVgWFp9tKL2OI_j2ZC_DBK6Q92o0o1sCPoU5Ti5vfRKkM6usw16G3nlWAbWUZ9wZn-iUriw8CYoTDAcAfjmXFGpWRddX5u4'
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                   $("#Content").text(response);
+                },
+                failure: function (response) {
+                    alert(response.d);
+                }
+            });
+        });
+    </script>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+
+        
+
+        
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
