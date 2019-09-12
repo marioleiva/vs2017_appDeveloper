@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="/signalr/hubs"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="~/Content/toasty.css" rel="stylesheet" />
+    <script src="~/Scripts/toasty.js"></script>
+    <script>
+        var toast = new Toasty();
+        var options = {
+            classname: "toast",
+            transition: "fade",
+            insertBefore: true,
+            duration: 5000,
+            enableSounds: true,
+            autoClose: true,
+            progressBar: true,
+            sounds: {
+                info: "/Content/sounds/info/1.mp3",
+                success: "/Content/sounds/success/1.mp3",
+                warning: "/Content/sounds/warning/1.mp3",
+                error: "/Content/sounds/error/1.mp3",
+            },
+        };
+        toast.configure(options);
+        var notificationProxy = $.connection.notificationHub;
+        notificationProxy.client.NuevaNotificacion = (notificacion) => toast.info(notificacion);
+        $.connection.hub.start();
+    </script>
+</body>
+</html>
